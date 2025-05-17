@@ -84,13 +84,41 @@
     <p>Selamat datang <span id="user-name">...</span>! di platform pembelajaran. Silakan pilih menu di atas untuk mengakses materi, kuis, dan latihan soal.</p>
   </section>
 
+  <div style="display: flex; justify-content: flex-end; align-items: center; margin-bottom: 10px;">
+  <span style="margin-right: 10px; color: #6a1b9a;"><strong id="profile-username"></strong></span>
+  <a href="profil_user.html" style="margin-right: 10px;">
+    <img src="https://img.icons8.com/ios-glyphs/30/4a148c/user--v1.png" alt="Profil" />
+  </a>
+  <button onclick="logout()" style="background-color: #ce93d8; color: #4a148c; border: none; padding: 6px 12px; border-radius: 8px; cursor: pointer;">
+    Logout
+  </button>
+</div>
+
+  
 </body>
 </html>
+
 <script>
   const username = localStorage.getItem('loggedInUser');
   if (username) {
     document.getElementById('user-name').textContent = username;
   } else {
     window.location.href = 'index.html'; // kalau belum login, kembali ke login
+  }
+</script>
+<script>
+  const username = localStorage.getItem('loggedInUser');
+  const userClass = localStorage.getItem('loggedInClass') || "Kelas belum diatur";
+
+  if (username) {
+    document.querySelectorAll('#user-name').forEach(el => el.textContent = username);
+    document.getElementById('profile-username').textContent = username;
+  } else {
+    window.location.href = 'index.html';
+  }
+
+  function logout() {
+    localStorage.clear();
+    window.location.href = 'index.html';
   }
 </script>

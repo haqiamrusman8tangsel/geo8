@@ -4,30 +4,29 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
   const inputUsername = document.getElementById('username').value;
   const inputPassword = document.getElementById('password').value;
 
-  const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQEELB6ndEDdYqp6W08qaU26J6iMT1X13P6oCZt-QtKZ9C9VnwWTvKGKQgPCS5tsT-hxMem82VuxSnH/pub?output=csv'; // Ganti dengan link CSV kamu
+  const sheetURL = 'https://docs.google.com/spreadsheets/d/ID_SHEET_KAMU/export?format=csv'; // Ganti ID sheet kamu
 
   fetch(sheetURL)
     .then(response => response.text())
     .then(data => {
-      const rows = data.split('\n').slice(1); // skip header
+      const rows = data.split('\n').slice(1);
       let found = false;
 
       rows.forEach(row => {
         const [username, password] = row.trim().split(',');
-
         if (username === inputUsername && password === inputPassword) {
           found = true;
         }
       });
 
-      const result = document.getElementById('result');
       if (found) {
-        result.textContent = 'Login berhasil!';
+        window.location.href = "home.html";
       } else {
-        result.textContent = 'Username atau password salah.';
+        document.getElementById('result').textContent = 'Username atau password salah.';
       }
     })
     .catch(error => {
       console.error('Error:', error);
+      document.getElementById('result').textContent = 'Gagal mengambil data.';
     });
 });

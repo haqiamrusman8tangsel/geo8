@@ -138,7 +138,10 @@
     <p>Selamat datang <span id="user-name-2">...</span>! di platform pembelajaran. Silakan pilih menu di atas untuk mengakses materi, kuis, dan latihan soal.</p>
   </section>
 
+  <script src="script.js"></script>
+
   <script>
+    
     const username = localStorage.getItem('loggedInUser');
     if (!username) {
       window.location.href = 'index.html';

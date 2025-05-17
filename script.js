@@ -1,10 +1,10 @@
 document.getElementById('loginForm').addEventListener('submit', function(e) {
   e.preventDefault();
 
-  const inputUsername = document.getElementById('username').value;
-  const inputPassword = document.getElementById('password').value;
+  const inputUsername = document.getElementById('username').value.trim();
+  const inputPassword = document.getElementById('password').value.trim();
 
-  const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQEELB6ndEDdYqp6W08qaU26J6iMT1X13P6oCZt-QtKZ9C9VnwWTvKGKQgPCS5tsT-hxMem82VuxSnH/pub?output=csv'; // Ganti ID sheet kamu
+  const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQEELB6ndEDdYqp6W08qaU26J6iMT1X13P6oCZt-QtKZ9C9VnwWTvKGKQgPCS5tsT-hxMem82VuxSnH/pub?output=csv';
 
   fetch(sheetURL)
     .then(response => response.text())
@@ -14,8 +14,9 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
 
       rows.forEach(row => {
         const [username, password] = row.trim().split(',');
-        if (username === inputUsername && password === inputPassword) {
+        if (username && password && username.trim() === inputUsername && password.trim() === inputPassword) {
           found = true;
+          localStorage.setItem('loggedInUser', username.trim()); // Simpan nama user
         }
       });
 

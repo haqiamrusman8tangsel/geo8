@@ -68,7 +68,7 @@
 <body>
 
   <header>
-    <h1>Selamat Datang!</h1>
+    <h1>Selamat Datang <span id="user-name">...</span>!</h1>
     <p>Menu Pembelajaran Interaktif</p>
   </header>
 
@@ -81,8 +81,16 @@
 
   <section>
     <h2>Beranda</h2>
-    <p>Selamat datang di platform pembelajaran. Silakan pilih menu di atas untuk mengakses materi, kuis, dan latihan soal.</p>
+    <p>Selamat datang <span id="user-name">...</span>! di platform pembelajaran. Silakan pilih menu di atas untuk mengakses materi, kuis, dan latihan soal.</p>
   </section>
 
 </body>
 </html>
+<script>
+  const username = localStorage.getItem('loggedInUser');
+  if (username) {
+    document.getElementById('user-name').textContent = username;
+  } else {
+    window.location.href = 'index.html'; // kalau belum login, kembali ke login
+  }
+</script>

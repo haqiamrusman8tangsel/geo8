@@ -4,7 +4,7 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
   const inputUsername = document.getElementById('username').value;
   const inputPassword = document.getElementById('password').value;
 
-  const sheetURL = 'https://docs.google.com/spreadsheets/d/ID_SHEET_KAMU/export?format=csv'; // Ganti ID sheet kamu
+  const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQEELB6ndEDdYqp6W08qaU26J6iMT1X13P6oCZt-QtKZ9C9VnwWTvKGKQgPCS5tsT-hxMem82VuxSnH/pub?output=csv'; // Ganti ID sheet kamu
 
   fetch(sheetURL)
     .then(response => response.text())

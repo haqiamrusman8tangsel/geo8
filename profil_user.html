@@ -10,36 +10,66 @@
       font-family: 'Poppins', sans-serif;
       background-color: #f8f3f9;
       padding: 20px;
+      margin: 0;
     }
 
     .container {
       max-width: 500px;
-      margin: 0 auto;
+      margin: 40px auto;
       background-color: #ffffffcc;
       padding: 30px;
       border-radius: 16px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      text-align: center;
     }
 
     h1 {
       color: #6a1b9a;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      text-align: center;
+      font-weight: 700;
     }
 
-    p {
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 12px 15px;
+      border-bottom: 1px solid #ddd;
+      font-weight: 500;
       font-size: 18px;
-      margin: 10px 0;
+      color: #4a148c;
+    }
+
+    th {
+      width: 120px;
+      font-weight: 700;
+      background-color: #f3e5f5;
+      border-radius: 8px 0 0 8px;
+    }
+
+    td {
+      background-color: #fafafa;
+      border-radius: 0 8px 8px 0;
     }
 
     a.button {
       display: inline-block;
-      margin-top: 20px;
       background-color: #ce93d8;
       color: #4a148c;
-      padding: 10px 20px;
+      padding: 12px 25px;
       border-radius: 10px;
       text-decoration: none;
+      font-weight: 600;
+      font-size: 18px;
+      transition: background-color 0.3s ease;
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
+      cursor: pointer;
     }
 
     a.button:hover {
@@ -50,20 +80,30 @@
 <body>
   <div class="container">
     <h1>Profil Pengguna</h1>
-    <p><strong>Nama:</strong> <span id="namaUser">...</span></p>
-    <p><strong>Kelas:</strong> <span id="kelasUser">...</span></p>
+    <table>
+      <tr>
+        <th>Nama</th>
+        <td id="namaUser">...</td>
+      </tr>
+      <tr>
+        <th>Kelas</th>
+        <td id="kelasUser">...</td>
+      </tr>
+    </table>
     <a href="ubah_profil_user.html" class="button">Ubah Profil</a>
   </div>
-<script src="script.js"></script>
 
   <script>
-    const nama = localStorage.getItem('loggedInUser');
-    const kelas = localStorage.getItem('loggedInClass') || "Belum diatur";
+    // Misal ambil data dari localStorage sesuai nama kunci 'nama' dan 'kelas'
+    const nama = localStorage.getItem('nama');
+    const kelas = localStorage.getItem('kelas') || "Belum diatur";
 
+    // Jika belum login (nama kosong), redirect ke index
     if (!nama) {
       window.location.href = 'index.html';
     }
 
+    // Set konten tabel
     document.getElementById('namaUser').textContent = nama;
     document.getElementById('kelasUser').textContent = kelas;
   </script>

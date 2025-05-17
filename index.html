@@ -1,16 +1,100 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Login</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Pastel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fbdada, #d9f1f1);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-container {
+      background-color: #ffffffcc;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #5a5a5a;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #777;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px 15px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #b2dfdb;
+      color: #333;
+      border: none;
+      border-radius: 10px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #a5cec9;
+    }
+
+    #result {
+      margin-top: 15px;
+      text-align: center;
+      color: #c62828;
+      font-weight: 500;
+    }
+
+    @media (max-width: 500px) {
+      .login-container {
+        padding: 30px 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h2>Login</h2>
-  <form id="loginForm">
-    Username: <input type="text" id="username"><br>
-    Password: <input type="password" id="password"><br>
-    <button type="submit">Login</button>
-  </form>
-  <p id="result"></p>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Masukkan username" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Masukkan password" required>
+
+      <button type="submit">Masuk</button>
+    </form>
+    <p id="result"></p>
+  </div>
 
   <script src="script.js"></script>
 </body>
